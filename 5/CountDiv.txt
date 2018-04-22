@@ -1,0 +1,9 @@
+  if (Divide < B)
+            {
+                Divide = Divide + K;
+                NumbersDivisile.Add(Divide);
+            }
+            else
+            {
+                break;
+            }

@@ -1,0 +1,125 @@
+
+
+using System;
+// you can also use other imports, for example:
+ using System.Collections.Generic;
+using System.Linq;
+// you can write to stdout for debugging purposes, e.g.
+// Console.WriteLine("this is a debug message");
+
+class Solution {
+    public int[] solution(int N, int[] A) {
+        
+                    List<int> Counter = new List<int>();
+        
+            //Inicjalizacja 5 liczników
+            for(int i=0;i<N ;i++ )
+            {
+                Counter.Add(0);
+            }
+
+            foreach(int IntTable in A)
+            {
+                if(IntTable<=N)
+                {
+                    Counter[IntTable-1]++;
+                }else
+                {
+                    int max = Counter.Max();
+
+                    for (int i = 0; i < N; i++)
+                    {
+                        Counter[i] = max;
+                    }
+                }
+                
+            }
+        
+        return Counter.ToArray();
+        
+    }
+}
+
+
+
+/////DWA
+
+
+            int[] Counter = new int[N];
+            int IntMax = 0;
+
+
+            foreach(int NumberforCount in A)
+            {
+                if(NumberforCount<=N)
+                {
+                    Counter[NumberforCount-1]++;
+                }else
+                {
+                    IntMax = IntMax +Counter.Max();
+                    Counter = new int[N];
+                }
+            }
+
+            for(int i=0; i<N;i++)
+            {
+                Counter[i] = Counter[i] + IntMax;
+            }
+
+////TRZY
+
+
+
+
+using System;
+// you can also use other imports, for example:
+ using System.Collections.Generic;
+
+// you can write to stdout for debugging purposes, e.g.
+// Console.WriteLine("this is a debug message");
+
+class Solution {
+    public int[] solution(int N, int[] A) {
+      
+      
+    int[] result = new int[N];
+    int maximum = 0;
+    int resetLimit = 0;
+
+    for (int K = 0; K < A.Length; K++)
+    {
+        if (A[K] < 1 || A[K] > N + 1)
+            throw new InvalidOperationException();
+
+        if (A[K] >= 1 && A[K] <= N)
+        {
+            if (result[A[K] - 1] < resetLimit) {
+                result[A[K] - 1] = resetLimit + 1;
+            } else {
+                result[A[K] - 1]++;
+            }
+
+            if (result[A[K] - 1] > maximum)
+            {
+                maximum = result[A[K] - 1];
+            }
+        }
+        else
+        {
+            // inefficiency here
+            //for (int i = 0; i < result.Length; i++)
+            //    result[i] = maximum;
+            resetLimit = maximum;
+        }
+    }
+
+    for (int i = 0; i < result.Length; i++)
+        result[i] = Math.Max(resetLimit, result[i]);
+
+    return result;
+}
+      
+      
+    
+}
+

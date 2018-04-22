@@ -1,0 +1,45 @@
+
+
+using System;
+// you can also use other imports, for example:
+ using System.Collections.Generic;
+using System.Linq;
+// you can write to stdout for debugging purposes, e.g.
+// Console.WriteLine("this is a debug message");
+
+class Solution {
+    public int solution(int[] A) {
+        
+            List<int> Nintigers = new List<int>(A);
+
+          
+            //Znajdz wszystkie liczby wieksze od zera
+            var OnlyPos = Nintigers.Where(p => p > 0).ToArray();
+
+            HashSet<int> OnlyPositiveHasz = new HashSet<int>(OnlyPos);
+            List<int> OnlyPositive = new List<int>(OnlyPositiveHasz);
+            OnlyPositiveHasz = null;
+
+
+            //  if (OnlyPositive.Count == 0) return 1;
+            //  if (OnlyPositive[0] != 1) return 1;
+            OnlyPositive.Sort();
+
+            int idx = 1;
+            foreach(int i in OnlyPositive)
+            {
+                if (!(idx == i)) return idx;
+
+                idx++;
+            }
+
+return idx;
+
+
+        
+        
+        
+        
+    }
+}
+

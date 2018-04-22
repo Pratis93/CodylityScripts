@@ -1,0 +1,49 @@
+
+
+using System;
+// you can also use other imports, for example:
+ using System.Collections.Generic;
+using System.Linq;
+// you can write to stdout for debugging purposes, e.g.
+// Console.WriteLine("this is a debug message");
+
+class Solution {
+    public int solution(int[] A) {
+                    int wynik = 0;
+            int jedynki = 0;
+            int OneBeforeZero = 0;
+            bool FirstZero = false;
+
+           
+                for(int i=0;i<A.Length ;i++ )
+                {
+                    if (A[i] == 1) {
+                    OneBeforeZero++;
+                }
+                    else
+                    {
+                        break;
+                    }
+                }
+            
+
+            jedynki = A.Count(p => p == 1);
+
+            jedynki -= OneBeforeZero;
+
+            foreach (int Car in A)
+            {
+                if((Car == 1)&&(FirstZero==true))
+                {
+                    jedynki--;
+                }else
+                {
+                    wynik += jedynki;
+                    FirstZero = true;
+                    if (wynik > 1000000000) return -1;
+                }
+            }
+            return wynik;
+    }
+}
+

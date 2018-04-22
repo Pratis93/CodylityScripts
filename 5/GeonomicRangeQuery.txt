@@ -1,0 +1,38 @@
+     List<int> SInt = new List<int>();
+
+            for(int i=0;i<S.Length;i++)
+            {
+                switch(S[i])
+                {
+                    case 'A':
+                        SInt.Add(1);
+                        break;
+                    case 'C':
+                        SInt.Add(2);
+                        break;
+                    case 'G':
+                        SInt.Add(3);
+                        break;
+                    case 'T':
+                        SInt.Add(4);
+                        break;
+                }
+            }
+
+            
+
+            int[] resoult = new int[P.Length] ;
+
+            for(int i=0;i<P.Length ;i++ )
+            {
+                int min = 4;
+                for (int j=P[i];j<=Q[i]; j++)
+                {
+                    if (SInt[j] < min) min = SInt[j];
+                }
+                resoult[i] = min;
+            }
+
+
+///DWA
+

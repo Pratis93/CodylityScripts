@@ -1,0 +1,21 @@
+
+            int[] Counter = new int[N];
+            int IntMax = 0;
+
+
+            foreach(int NumberforCount in A)
+            {
+                if(NumberforCount<=N)
+                {
+                    Counter[NumberforCount-1]++;
+                }else
+                {
+                    IntMax = IntMax +Counter.Max();
+                    Counter = new int[N];
+                }
+            }
+
+            for(int i=0; i<N;i++)
+            {
+                Counter[i] = Counter[i] + IntMax;
+            }
